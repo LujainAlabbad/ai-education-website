@@ -147,7 +147,7 @@ function updateNavigation() {
     }
 }
 
-// Call this function in your DOMContentLoaded event
+
 document.addEventListener('DOMContentLoaded', () => {
     updateNavigation();
 
