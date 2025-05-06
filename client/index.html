@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Education Hub</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">AI EduHub</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#learn">Learn</a></li>
+                <li><a href="#demos">Demos</a></li>
+                <li><a href="#community">Community</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <h1>Learn AI From Scratch</h1>
+            <p>Beginner-friendly resources to understand artificial intelligence</p>
+            <button class="cta-button">Start Learning</button>
+        </section>
+
+        <section id="courses" class="course-grid">
+            <h2>Popular Learning Paths</h2>
+            <div class="courses-container" id="courses-container">
+                <!-- Courses will be loaded dynamically from MongoDB -->
+            </div>
+        </section>
+
+        <section id="ai-demo" class="demo-section">
+            <h2>Try Our AI Demo</h2>
+            <div class="demo-container">
+                <textarea id="demo-input" placeholder="Ask me anything about AI..."></textarea>
+                <button id="demo-submit">Get Answer</button>
+                <div id="demo-output"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 AI Education Hub</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
