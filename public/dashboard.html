@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - AI Hub</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">AI Hub</div>
+            <ul>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/dashboard.html" class="active">Dashboard</a></li>
+                <li><a href="#" id="logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="dashboard">
+            <h1>Welcome, <span id="userName"></span></h1>
+            <div class="dashboard-content">
+                <p>This is your personalized AI dashboard.</p>
+                <!-- Add more personalized content here -->
+            </div>
+        </section>
+    </main>
+
+    <script src="/js/auth.js"></script>
+    <script>
+        // Check if user is logged in
+        const token = localStorage.getItem('token');
+        if (!token) {
+            window.location.href = '/login.html';
+        } else {
+            // Fetch user data
+            fetch('/api/user/profile', {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Not authenticated');
+                }
+                return response.json();
+            })
+            .then(user => {
+                document.getElementById('userName').textContent = user.name;
+            })
+            .catch(error => {
+                console.error(error);
+                window.location.href = '/login.html';
+            });
+        }
+
+        // Logout functionality
+        document.getElementById('logout').addEventListener('click', (e) => {
+            e.preventDefault();
+            localStorage.removeItem('token');
+            localStorage.removeItem('userId');
+            window.location.href = '/login.html';
+        });
+    </script>
+</body>
+</html>
