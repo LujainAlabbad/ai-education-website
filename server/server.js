@@ -10,7 +10,7 @@ const path = require('path');
 
 const authRoutes = require('./routes/auth');
 console.log('authRoutes loaded:', typeof authRoutes);
-const demoRoutes = require('./routes/demo'); // <- Make sure this is here!
+const demoRoutes = require('./routes/demo'); 
 const learningPathRoutes = require('./routes/learningPaths');
 
 const app = express();
@@ -23,8 +23,9 @@ app.use(express.static(path.join(__dirname, '..', 'client')));
 
 // ========== ROUTES ==========
 app.use('/api/auth', authRoutes);
-app.use('/api/demo', demoRoutes); // <- THIS is what wires demo.js
 app.use('/api/paths', learningPathRoutes);
+app.use(express.json()); // For parsing JSON bodies
+app.use('/api/demo', require('./routes/demo'));
 
 
 app.get('/', (req, res) => {

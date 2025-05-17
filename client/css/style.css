@@ -1,3 +1,5 @@
+/* style.css - Complete Fixed Version */
+
 /* Poppins font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
@@ -18,7 +20,7 @@ html, body {
 
 body {
   position: relative;
-  overflow: hidden;
+  min-height: 100vh;
 }
 
 /* Background video */
@@ -61,18 +63,19 @@ body {
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
   user-select: none;
 }
 
 .circle-nav.full a:hover,
 .circle-nav.full button:hover {
   background-color: rgba(255,255,255,0.6);
+  transform: scale(1.1);
 }
 
 /* Content container */
 .content {
-  position: fixed;
+  position: relative;
   top: 80px;
   left: 50%;
   transform: translateX(-50%);
@@ -83,245 +86,168 @@ body {
   display: flex;
   flex-direction: column;
   gap: 40px;
-  color: white !important;
-  background: transparent !important;
   text-align: left;
   align-items: flex-start;
+  margin-bottom: 100px;
 }
 
-.content > :not(#demo) {
-  width: 100%;
-  align-self: flex-start !important;
-}
-
-/* Demo section centered */
-#demo {
-  max-width: 500px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-#demo h2,
-#demo p,
-#demo textarea,
-#demo button {
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-}
-
-/* Headings with glow */
-h1, h2, h3 {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+.content * {
   color: white;
-}
-
-h1 {
-  font-size: 3rem;
-  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #0ff, 0 0 30px #0ff;
-}
-
-h2 {
-  font-size: 2.5rem;
-  text-shadow: 0 0 4px #fff, 0 0 8px #0ff, 0 0 16px #0ff;
-}
-
-h3 {
-  font-size: 2rem;
-  text-shadow: 0 0 3px #fff, 0 0 6px #0ff;
-}
-
-p {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: white !important;
-}
-
-/* Text elements forced white */
-.content h1, 
-.content h2, 
-.content p,
-.content a,
-.content button,
-.content textarea,
-.content div {
-  color: white !important;
-  background: transparent !important;
-}
-
-/* Buttons */
-.content a.cta-button,
-.content button {
-  background-color: rgba(0,255,255,0.8);
-  color: black;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-weight: bold;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  cursor: pointer;
-  max-width: fit-content;
-  margin-top: 10px;
-  text-decoration: none;
-  transition: border-color 0.3s ease;
-}
-
-.content a.cta-button:hover,
-.content button:hover {
-  border-color: rgba(255, 255, 255, 0.7);
-}
-
-/* Textarea */
-.content textarea {
-  width: 100%;
-  height: 80px;
-  border-radius: 5px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  padding: 10px;
-  resize: vertical;
-  font-size: 1rem;
-  color: black;
-  background-color: rgba(255, 255, 255, 0.1);
-  transition: 0.3s ease;
-  font-family: 'Poppins', sans-serif;
-}
-
-.content textarea:focus {
-  border-color: rgba(255, 255, 255, 0.7);
-  background-color: rgba(255, 255, 255, 0.15);
-  outline: none;
-}
-
-/* Footer */
-footer#about {
-  font-size: 0.75rem;
-  color: rgba(255,255,255,0.6);
-  text-align: center;
-  padding: 10px 0;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
   background: transparent;
-  z-index: 10;
 }
 
-/* About page */
-.about-content h2 {
+/* DEMO SECTION FIXES */
+#demo {
+  width: 100%;
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.2);
+}
+
+#demo h2 {
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 20px;
 }
 
-.about-content p {
-  text-align: left;
-  margin-bottom: 1.5rem;
-  max-width: 700px;
+#demo p {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-/* Auth page adjustments */
-.auth-page .circle-nav.full {
-  left: auto !important;
-  right: 20px !important;
+/* Textarea styling */
+#demo-question {
+  width: 100%;
+  min-height: 120px;
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(0, 255, 255, 0.5);
+  border-radius: 10px;
+  color: white;
+  font-size: 1rem;
+  resize: vertical;
+  transition: all 0.3s ease;
 }
 
-.auth-page .content {
-  left: 50% !important;
-  right: auto !important;
-  transform: translateX(-50%) !important;
-  width: 400px !important;
-  max-width: 90vw !important;
-  padding: 0 20px !important;
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 30px !important;
-  align-items: stretch !important;
-  text-align: left !important;
-  color: white !important;
-  background: transparent !important;
-  z-index: 10;
+#demo-question:focus {
+  outline: none;
+  border-color: rgba(0, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
 }
 
-.auth-page .content > * {
-  width: 100% !important;
-}
-
-.auth-page .content form,
-.auth-page .content input,
-.auth-page .content button,
-.auth-page .content p {
-  width: 100% !important;
-  text-align: left !important;
+/* Answer button fixes */
+#get-answer {
+  display: block;
+  width: 200px;
+  height: 50px;
+  margin: 20px auto;
+  background: linear-gradient(135deg, rgba(0,255,255,0.8) 0%, rgba(0,180,255,0.8) 100%);
+  color: #000;
+  font-weight: 600;
   font-size: 1.1rem;
-  color: white !important;
-  background: transparent !important;
-  font-family: 'Poppins', sans-serif;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
-/* Auth headings */
-.auth-page .content h2 {
-  text-align: center !important;
-  font-size: 2.5rem !important;
-  text-shadow: 0 0 4px #fff, 0 0 8px #0ff, 0 0 16px #0ff !important;
-  margin-bottom: 20px !important;
+#get-answer:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 255, 255, 0.3);
 }
 
-/* Auth inputs */
-.auth-page .content input {
-  background: rgba(255,255,255,0.1) !important;
-  border: 2px solid rgba(255,255,255,0.3) !important;
-  border-radius: 5px !important;
-  padding: 12px 15px !important;
-  margin-bottom: 15px !important;
-  color: black !important;
-  transition: border-color 0.3s ease !important;
+#get-answer:active {
+  transform: translateY(-1px);
 }
 
-.auth-page .content input:focus {
-  border-color: rgba(0,255,255,0.8) !important;
-  background: rgba(255,255,255,0.15) !important;
-  outline: none !important;
+#get-answer:disabled {
+  background: rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.5);
+  cursor: not-allowed;
+  transform: none;
 }
 
-/* Auth buttons */
-.auth-page .content button {
-  background-color: rgba(0,255,255,0.8) !important;
-  border: 2px solid rgba(255,255,255,0.3) !important;
-  border-radius: 5px !important;
-  font-weight: bold !important;
-  color: black !important;
-  padding: 12px 20px !important;
-  cursor: pointer !important;
-  transition: border-color 0.3s ease !important;
+/* Answer display area */
+#demo-answer {
+  width: 100%;
+  min-height: 100px;
+  padding: 20px;
+  margin-top: 20px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  border-left: 3px solid rgba(0, 255, 255, 0.5);
+  line-height: 1.6;
 }
 
-.auth-page .content button:hover {
-  border-color: rgba(255,255,255,0.7) !important;
+/* Loading animation */
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
 }
 
-/* Responsive */
+.thinking {
+  animation: pulse 1.5s infinite;
+  font-style: italic;
+}
+
+/* Responsive fixes */
 @media screen and (max-width: 768px) {
+  .content {
+    top: 100px;
+    padding: 0 15px;
+  }
+  
+  #demo {
+    padding: 20px;
+    margin: 20px auto;
+  }
+  
+  #get-answer {
+    width: 100%;
+    max-width: 200px;
+  }
+}
+
+@media screen and (max-width: 480px) {
   .circle-nav.full {
     left: 50%;
     transform: translateX(-50%);
   }
-
-  .content {
-    max-width: 90%;
-    padding: 0 10px;
-    gap: 30px;
-    align-items: center;
+  
+  #demo {
+    padding: 15px;
   }
-
-  .content a.cta-button,
-  .content button {
-    width: 100%;
-    text-align: center;
+  
+  #demo-question {
+    min-height: 100px;
   }
+}
 
-  .auth-page .content {
-    position: static !important;
-    width: auto !important;
-    margin-top: 100px !important;
-    max-width: 90vw !important;
-    padding: 20px !important;
-    align-items: stretch !important;
-  }
+/* Footer fixes */
+footer#about {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px 0;
+  background: rgba(0,0,0,0.7);
+  z-index: 10;
+  text-align: center;
+}
+
+/* Auth page adjustments */
+.auth-page .content {
+  top: 120px;
+}
+
+.auth-page #bg-video {
+  transform: scale(1.2);
 }
