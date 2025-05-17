@@ -1,6 +1,6 @@
 require('dotenv').config({ path: __dirname + '/.env' });
 const mongoose = require('mongoose');
-const LearningPath = require('./models/LearningPath');
+const LearningPath = require('./server/models/LearningPath');
 
 const paths = [
   {
