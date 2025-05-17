@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI EduHub</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Background video -->
+<video autoplay muted loop playsinline id="bg-video">
+  <source src="videos/Background.mp4" type="video/mp4" />
+  Your browser does not support HTML5 video.
+</video>
+
+
+  <!-- Circle navigation -->
+  <div class="circle-nav full">
+    <a href="index.html" title="Home">Home</a>
+    <a href="about.html" title="About">About</a>
+    <a href="signup.html" title="Sign Up">Sign Up</a>
+    <a href="login.html" title="Sign In">Sign In</a>
+    <button id="logout-btn" title="Logout">Logout</button>
+  </div>
+
+  <div class="content">
+    <main class="hero">
+      <h1>Learn AI from scratch</h1>
+      <p>Beginner-friendly resources to understand artificial intelligence</p>
+      <a href="#paths" class="cta-button">Start Learning</a>
+    </main>
+
+    <section id="paths" class="learning-paths">
+      <h2>Popular Learning Paths</h2>
+      <div id="paths-list">Error loading learning paths.</div>
+    </section>
+
+    <section id="demo" class="demo">
+      <h2>Try Our Demo</h2>
+      <p>Ask anything about AI</p>
+      <textarea id="demo-question" placeholder="Type your question..."></textarea><br />
+      <button id="get-answer">Get Answer</button>
+      <div id="demo-answer"></div>
+    </section>
+
+    <footer id="about">
+      <p>© 2025 AI EduHub. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

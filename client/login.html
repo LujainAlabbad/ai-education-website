@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login - AI EduHub</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="auth-page">
+
+  <!-- Background video -->
+  <video autoplay muted loop playsinline id="bg-video">
+    <source src="videos/BackgroundOthers.MP4" type="video/mp4" />
+    Your browser does not support HTML5 video.
+  </video>
+
+  <!-- Circle navigation -->
+  <div class="circle-nav full">
+    <a href="index.html" title="Home">Home</a>
+    <a href="about.html" title="About">About</a>
+    <a href="signup.html" title="Sign Up">Sign Up</a>
+    <a href="login.html" title="Sign In" class="active">Sign In</a>
+    <button id="logout-btn" title="Logout">Logout</button>
+  </div>
+
+  <div class="content auth-content">
+    <main>
+      <h2>Login to your account</h2>
+      <form id="login-form">
+        <input type="email" id="email" placeholder="Email Address" required /><br /><br />
+        <input type="password" id="password" placeholder="Password" required /><br /><br />
+        <button type="submit">Login</button>
+      </form>
+      <p id="login-message" style="margin-top: 20px;"></p>
+    </main>
+  </div>
+
+  <script>
+    document.getElementById('login-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      const msgEl = document.getElementById('login-message');
+
+      try {
+        const res = await fetch('/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'include',
+          body: JSON.stringify({ email, password })
+        });
+
+        const data = await res.json();
+        if (res.ok) {
+          msgEl.innerText = 'Login successful!';
+          localStorage.setItem('token', data.token);
+          localStorage.setItem('user', JSON.stringify(data.user));
+          setTimeout(() => window.location.href = 'index.html', 1000);
+        } else {
+          msgEl.innerText = data.msg || 'Login failed.';
+        }
+      } catch (err) {
+        msgEl.innerText = 'Error logging in.';
+        console.error(err);
+      }
+    });
+  </script>
+
+</body>
+</html>

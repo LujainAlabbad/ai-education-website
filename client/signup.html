@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sign Up - AI EduHub</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="auth-page">
+
+  <!-- Background video -->
+  <video autoplay muted loop playsinline id="bg-video">
+    <source src="videos/BackgroundOthers.MP4" type="video/mp4" />
+    Your browser does not support HTML5 video.
+  </video>
+
+  <!-- Circle navigation -->
+  <div class="circle-nav full">
+    <a href="index.html" title="Home">Home</a>
+    <a href="about.html" title="About">About</a>
+    <a href="signup.html" title="Sign Up" class="active">Sign Up</a>
+    <a href="login.html" title="Sign In">Sign In</a>
+    <button id="logout-btn" title="Logout">Logout</button>
+  </div>
+
+  <div class="content auth-content">
+    <main>
+      <h2>Create Account</h2>
+      <form id="signup-form">
+        <input type="text" id="fullName" placeholder="Full Name" required /><br /><br />
+        <input type="email" id="email" placeholder="Email Address" required /><br /><br />
+        <input type="password" id="password" placeholder="Password" required /><br /><br />
+        <input type="password" id="confirmPassword" placeholder="Confirm Password" required /><br /><br />
+        <button type="submit">Sign Up</button>
+      </form>
+      <p id="signup-message" style="margin-top: 20px;"></p>
+    </main>
+  </div>
+
+  <script>
+    document.getElementById('signup-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const fullName = document.getElementById('fullName').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+
+      const msgEl = document.getElementById('signup-message');
+      if (password !== confirmPassword) {
+        msgEl.innerText = "Passwords do not match.";
+        return;
+      }
+
+      try {
+        const res = await fetch('/api/auth/signup', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ fullName, email, password })
+        });
+
+        const data = await res.json();
+        msgEl.innerText = data.msg || 'Sign up successful! You can now log in.';
+      } catch (err) {
+        msgEl.innerText = 'Error signing up.';
+        console.error(err);
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,363 @@
+ /* Poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+html, body {
+  height: 100%;
+  margin: 0;
+  background-color: transparent; /* Let video show through */
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background video styled to cover viewport, zoomed top-left by default */
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+  pointer-events: none;
+  background-color: black;
+  transform: scale(1.4);
+  transform-origin: top left;
+}
+
+/* Circle navigation - fixed top-left, small circles inline */
+.circle-nav.full {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 15;
+  display: flex;
+  gap: 8px;
+  flex-wrap: nowrap;
+  max-width: none;
+}
+
+.circle-nav.full a,
+.circle-nav.full button {
+  width: 50px;
+  height: 50px;
+  background-color: rgba(255,255,255,0.3);
+  color: white;
+  text-decoration: none;
+  border: none;
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 0.7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  padding: 5px;
+  user-select: none;
+}
+
+.circle-nav.full a:hover,
+.circle-nav.full button:hover {
+  background-color: rgba(255,255,255,0.6);
+}
+
+/* Content container - positioned near top-left below nav, full width */
+.content {
+  position: fixed;
+  top: 80px; /* below buttons */
+  left: 20px; /* aligned with nav buttons */
+  transform: none;
+  max-width: none;
+  width: auto;
+  color: white !important;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding-right: 20px;
+  background: transparent !important;
+  text-align: left;
+}
+
+/* Non-demo children left aligned and full natural width */
+.content > :not(#demo) {
+  width: auto;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  align-self: flex-start !important;
+}
+
+/* Demo section centered horizontally */
+#demo {
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#demo h2,
+#demo p,
+#demo textarea,
+#demo button {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  text-align: center;
+}
+
+/* Bigger glowing headings */
+h1 {
+  font-size: 3rem;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  text-shadow:
+    0 0 5px #fff,
+    0 0 10px #fff,
+    0 0 20px #0ff,
+    0 0 30px #0ff,
+    0 0 40px #0ff;
+}
+
+h2 {
+  font-size: 2.5rem;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  text-shadow:
+    0 0 4px #fff,
+    0 0 8px #0ff,
+    0 0 16px #0ff;
+}
+
+h3 {
+  font-size: 2rem;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  text-shadow:
+    0 0 3px #fff,
+    0 0 6px #0ff;
+}
+
+/* Paragraph content styling */
+p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: white !important;
+}
+
+/* Force white color on all content text */
+.content h1, 
+.content h2, 
+.content p,
+.content a,
+.content button,
+.content textarea,
+.content div {
+  color: white !important;
+  background: transparent !important;
+}
+
+/* Buttons with visible borders */
+.content a.cta-button,
+.content button {
+  background-color: rgba(0,255,255,0.8);
+  color: black;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  max-width: fit-content;
+  margin-top: 10px;
+  text-decoration: none;
+  display: inline-block;
+  transition: border-color 0.3s ease;
+}
+
+.content a.cta-button:hover,
+.content button:hover {
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+/* Demo textarea with visible border and subtle transparent background */
+.content textarea {
+  width: 100%;
+  height: 80px;
+  border-radius: 5px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 10px;
+  resize: vertical;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  color: black;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.content textarea:focus {
+  border-color: rgba(255, 255, 255, 0.7);
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Footer smaller text, fixed bottom center */
+footer#about {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.6);
+  text-align: center;
+  padding: 10px 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: transparent;
+  z-index: 10;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .content {
+    left: 20px;
+    max-width: 90%;
+    padding-right: 10px;
+    gap: 30px;
+  }
+  .circle-nav.full {
+    justify-content: center;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .content a.cta-button, .content button {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* About page specific styles (isolated with .about-content) */
+.about-content h2 {
+  text-align: center;           /* Center the title */
+  margin-bottom: 1rem;
+}
+
+.about-content p {
+  text-align: left;             /* Left-align paragraphs */
+  margin-bottom: 1.5rem;
+  max-width: 700px;
+}
+
+/* Auth pages navigation buttons moved top-right */
+.auth-page .circle-nav.full {
+  left: auto !important;
+  right: 20px !important;
+}
+
+/* Auth pages main content container fully right aligned */
+.auth-page .content {
+  position: fixed;
+  top: 80px;
+  right: 0 !important;         /* flush right */
+  left: auto !important;       /* unset left */
+  width: 400px !important;
+  max-width: 90vw !important;
+  padding-left: 20px !important;
+  padding-right: 10px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 30px !important;
+  align-items: flex-start !important;
+  text-align: left !important;
+  color: white !important;
+  background: transparent !important;
+  z-index: 10;
+}
+
+/* Make direct children fill container width */
+.auth-page .content > * {
+  width: 100% !important;
+  margin: 0 auto !important;
+}
+
+/* Form elements fill container and keep text left aligned */
+.auth-page .content form,
+.auth-page .content input,
+.auth-page .content button,
+.auth-page .content p {
+  width: 100% !important;
+  margin: 0 !important;
+  padding: initial !important;
+  text-align: left !important;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  color: white !important;
+  background: transparent !important;
+}
+
+/* Heading centered as before */
+.auth-page .content h2 {
+  text-align: center !important;
+  font-size: 2.5rem !important;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+  text-shadow:
+    0 0 4px #fff,
+    0 0 8px #0ff,
+    0 0 16px #0ff !important;
+  margin-bottom: 20px !important;
+}
+
+/* Inputs styling consistent with your design */
+.auth-page .content input {
+  background: rgba(255,255,255,0.1) !important;
+  border: 2px solid rgba(255,255,255,0.3) !important;
+  border-radius: 5px !important;
+  padding: 12px 15px !important;
+  margin-bottom: 15px !important;
+  color: black !important;
+  transition: border-color 0.3s ease !important;
+}
+
+.auth-page .content input:focus {
+  border-color: rgba(0,255,255,0.8) !important;
+  outline: none !important;
+  background: rgba(255,255,255,0.15) !important;
+}
+
+/* Buttons with glowing border and consistent styling */
+.auth-page .content button {
+  background-color: rgba(0,255,255,0.8) !important;
+  border: 2px solid rgba(255,255,255,0.3) !important;
+  border-radius: 5px !important;
+  font-weight: bold !important;
+  cursor: pointer !important;
+  transition: border-color 0.3s ease !important;
+  color: black !important;
+  padding: 12px 20px !important;
+  max-width: 100% !important;
+}
+
+.auth-page .content button:hover {
+  border-color: rgba(255,255,255,0.7) !important;
+}
+
+/* Responsive tweaks for auth pages */
+@media (max-width: 768px) {
+  .auth-page .content {
+    position: static !important;
+    width: auto !important;
+    padding: 20px !important;
+    margin-top: 100px !important;
+    max-width: 90vw !important;
+    align-items: stretch !important;
+  }
+}
+.auth-page #bg-video {
+  left: 0 !important;
+  right: auto !important;
+  transform-origin: top left !important;
+  /* Keep the scale if you want */
+  transform: scale(1.4) !important;
+}
